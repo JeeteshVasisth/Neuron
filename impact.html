@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Impact of AI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="impact.css">
+</head>
+<body>
+    <header>
+         <nav class="navbar">
+           <a href="./index.html" class="logo">Neuron</a>
+           <ul class="menu-links">
+             <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+             <li><a href='./understand.html'>Understanding AI</a></li>
+             <li><a href='./understand2.html'>Basic Terms</a></li>
+             <li><a href='./impact.html'>Impact</a></li>
+             <li><a href='./timeline.html'>Timeline</a></li>
+             <li><a href='./diy.html'>DIY</a></li>
+             <li><a href='./AIs.html'>AIs</a></li>
+           </ul>
+           <span id="menu-btn" class="material-symbols-outlined">menu</span>
+         </nav>
+   </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Artificial Intelligence (AI) is rapidly transforming various aspects of our lives. From automating mundane tasks to providing deep insights into complex problems, AI's impact is far-reaching and profound.</p>
+        </section>
+        <section id="economy">
+            <h2>Impact on Economy</h2>
+            <p>AI is reshaping the economy by enhancing productivity, creating new job categories, and transforming industries. However, it also poses challenges such as job displacement and income inequality.</p>
+        </section>
+        <section id="healthcare">
+            <h2>Impact on Healthcare</h2>
+            <p>In healthcare, AI is improving diagnostics, personalizing treatments, and streamlining administrative tasks. AI-driven innovations are making healthcare more accessible and efficient.</p>
+        </section>
+        <section id="ethics">
+            <h2>Ethical Considerations</h2>
+            <p>The ethical implications of AI include issues like privacy, bias, and accountability. As AI systems become more prevalent, it's crucial to address these concerns to ensure fair and responsible use.</p>
+        </section>
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>The impact of AI is extensive and multi-faceted. While it offers significant benefits, it also presents challenges that need to be carefully managed to harness its full potential responsibly.</p>
+        </section>
+    </main>
+    <script>
+        const header = document.querySelector("header");
+        const menuBtn = document.querySelector("#menu-btn");
+        const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+        menuBtn.addEventListener("click", () => {
+          header.classList.toggle("show-mobile-menu");
+        })
+
+        closeMenuBtn.addEventListener("click", () => {
+          menuBtn.click()
+        })
+    </script>
+</body>
+</html>

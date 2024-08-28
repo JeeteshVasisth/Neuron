@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Data Preparation Process</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fff;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff6600;
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            margin-top:420px;
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: #ff6600;
+            margin: 0.5em auto 1em;
+        }
+
+        .process {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            width: 100%;
+        }
+
+        .step {
+            padding: 1em;
+            border: 3px solid;
+            width: 90%;
+            max-width: 300px;
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeIn 1s forwards;
+            height: 250px;
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .step:nth-child(3) {
+            animation-delay: 2s;
+        }
+        .step h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .step ul {
+            padding-left: 20px;
+            font-size: 1.1em;
+        }
+        .data-collection {
+            border-color: #007bff;
+        }
+        .data-preprocessing {
+            border-color: #ffc107;
+        }
+
+        .data-transformation {
+            border-color: #28a745;
+        }
+        .data-transformation h3 {
+            font-size: 1.2em;
+            margin: 0.5em 0;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid #000;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            display: none;
+        }
+
+        .arrow:nth-of-type(2) {
+            animation-delay: 1s;
+        }
+        .arrow:nth-of-type(3) {
+            animation-delay: 2s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 20px;
+            z-index: 10000000;
+            background-color: white;
+        }
+
+        header .navbar {
+          display: flex;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          justify-content: space-between;
+        }
+
+        .navbar .logo {
+          color: #000;
+          font-size: 2.1rem;
+          font-weight: 600;
+        }
+
+        .navbar .logo span {
+          color: #C06B3E;
+        }
+
+        .navbar .menu-links {
+          display: flex;
+          gap: 40px;
+          list-style: none;
+        }
+
+        .navbar a {
+          color: #000;
+          text-decoration: none;
+          transition: 0.2s ease;
+        }
+
+        .navbar a:hover {
+          color: #C06B3E;
+        }
+
+        #menu-btn {
+          color: #000;
+          cursor: pointer;
+          display: none;
+        }
+
+        #close-menu-btn {
+          display: none;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          cursor: pointer;
+        }
+
+        @media screen and (max-width: 900px) {
+          header {
+            padding: 10px 20px;
+          }
+          header.show-mobile-menu::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+          }
+          #close-menu-btn, #menu-btn {
+            display: block;
+          }
+          .navbar .menu-links {
+            position: fixed;
+            left: -260px;
+            top: 0;
+            flex-direction: column;
+            width: 260px;
+            height: 100vh;
+            background: white;
+            padding: 70px 40px 0;
+            transition: left 0.15s ease;
+          }
+
+          header.show-mobile-menu .navbar .menu-links {
+            left: 0;
+          }
+
+          .navbar a {
+            color: #000;
+          }
+        }
+
+        @media (min-width: 861px) {
+            h1 {
+                margin-top: 0;
+            }
+            .process {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .step {
+                width: 30%;
+                margin-bottom: 0;
+            }
+            .arrow {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <a href="./index.html" class="logo">Neuron</a>
+          <ul class="menu-links">
+            <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+            <li><a href='./understand.html'>Understanding AI</a></li>
+            <li><a href='./understand2.html'>Basic Terms</a></li>
+            <li><a href='./impact.html'>Impact</a></li>
+            <li><a href='./timeline.html'>Timeline</a></li>
+            <li><a href='./diy.html'>DIY</a></li>
+              <li><a href='./AIs.html'>AIs</a></li>
+          </ul>
+          <span id="menu-btn" class="material-symbols-outlined">menu</span>
+        </nav>
+      </header>
+    <div class="container">
+        <h1>How does an AI work?</h1>
+        <div class="process">
+            <div class="step data-collection">
+                <h2>Data Collection</h2>
+                <ul>
+                    <li>Articulating the problem</li>
+                    <li>Defining data required</li>
+                    <li>Gathering and combining data from different sources</li>
+                </ul>
+                <div class="arrow"></div>
+            </div>
+            <div class="step data-preprocessing">
+                <h2>Data Preprocessing</h2>
+                <ul>
+                    <li>Formatting</li>
+                    <li>Cleaning</li>
+                    <li>Sampling</li>
+                </ul>
+                <div class="arrow"></div>
+            </div>
+            <div class="step data-transformation">
+                <h2>Data Transformation</h2>
+                <h3>Feature Engineering</h3>
+                <ul>
+                    <li>Scaling/normalizing</li>
+                    <li>Decomposition</li>
+                    <li>Aggregation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
